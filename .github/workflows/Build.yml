@@ -9,7 +9,7 @@ on:
       - .github/workflows/Build.yml
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
