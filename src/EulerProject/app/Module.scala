@@ -26,6 +26,7 @@ class Module extends AbstractModule {
     bind(classOf[services.problem1.Calculator]).asEagerSingleton()
     bind(classOf[services.problem2.Calculator]).asEagerSingleton()
     bind(classOf[services.problem9.Calculator]).asEagerSingleton()
+    bind(classOf[services.problem18.Calculator]).asEagerSingleton()
   }
 
 }

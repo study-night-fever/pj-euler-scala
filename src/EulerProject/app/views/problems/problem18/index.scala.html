@@ -1,0 +1,55 @@
+@import services.problem18._
+
+@(triangles: Seq[Triangle])(implicit request: RequestHeader)
+
+@views.html.templates.main(s"Problem${Info.id}", styles = styles, scripts = scripts) {
+    @views.html.problems.components.subject(Info)
+    @views.html.problems.components.execute() {
+        @helper.form(action = helper.CSRF(controllers.problems.routes.Problem18Controller.execute())) {
+            @helper.CSRF.formField
+            <fieldset class="form-group">
+                <label for="id">データ</label>
+                <select id="id" name="id" class="form-control">
+                @for(triangle <- triangles) {
+                    <option value="@triangle.id">@triangle.id</option>
+                }
+                </select>
+                <div class="my-3">
+                @for(triangle <- triangles) {
+                    <div class="triangle-data" triangle-id="@triangle.id" style="display: none;">
+                    @for(row <- triangle.data) {
+                        <div class="triangle-row">
+                        @row.map(col => String.format("%0" + triangle.maxDigit + "d", col)).mkString(" ")
+                        </div>
+                    }
+                    </div>
+                }
+                </div>
+            </fieldset>
+        }
+    }
+    @views.html.problems.components.result() {
+
+    }
+}
+
+@styles = {
+    <style>
+            .triangle-data {
+                text-align: center;
+            }
+    </style>
+}
+@scripts = {
+    <script>
+            $(function () {
+                const $id = $("#id");
+                $id.change(function () {
+                    $(".triangle-data").hide();
+                    $("div[triangle-id=" + $(this).val() + "]").show();
+                });
+
+                $id.change();
+            });
+    </script>
+}
