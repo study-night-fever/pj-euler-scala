@@ -19,6 +19,12 @@ jobs:
         with:
           java-version: 11
       - name: Build
-        run: sbt compile
+        run: |
+          cd ${GITHUB_WORKSPACE}/${APP_ROOT}
+          sbt compile
       - name: Test
-        run: sbt test
+        run: |
+          cd ${GITHUB_WORKSPACE}/${APP_ROOT}
+          sbt test
+    env:
+      APP_ROOT: src/EulerProject
