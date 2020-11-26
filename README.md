@@ -7,4 +7,6 @@
 
 ## 実行環境
 
-(構築中)
+![Build and Test](https://github.com/ushibutatory/pj-euler-scala/workflows/Build%20and%20Test/badge.svg)
+
+[Heroku App](https://ushibutatory-pj-euler-scala.herokuapp.com/)
