@@ -1,0 +1,38 @@
+@import services.problem2._
+
+@(input: Input, output: Output)(implicit request: RequestHeader)
+
+@views.html.templates.main(s"Problem${Info.id}") {
+    @views.html.problems.components.subject(Info)
+    @views.html.problems.components.execute() {
+        @helper.form(action = helper.CSRF(controllers.problems.routes.Problem2Controller.execute())) {
+            @helper.CSRF.formField
+            <fieldset class="form-group">
+                <label for="value">入力値</label>
+                <input type="number" class="form-control" id="value" name="value" value="@input.value" min="0"/>
+            </fieldset>
+            <input type="submit" class="btn btn-primary" value="Calculate"/>
+        }
+    }
+    @views.html.problems.components.result() {
+        @output match {
+            case _: NoOutput => {
+                -
+            }
+            case _: ExecutedOutput => {
+                <table class="table table-borderless">
+                    <tr>
+                        <th>Sum</th>
+                        <td>@{
+                            f"${output.sum()}%,3d"
+                        }</td>
+                    </tr>
+                    <tr>
+                        <th>Details</th>
+                        <td>@output.values().mkString(", ")</td>
+                    </tr>
+                </table>
+            }
+        }
+    }
+}

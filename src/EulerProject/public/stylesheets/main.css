@@ -1,0 +1,9 @@
+main > .container {
+    padding: 16px;
+}
+
+.footer {
+    background-color: #f5f5f5;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}

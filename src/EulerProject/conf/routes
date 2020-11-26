@@ -1,0 +1,19 @@
+GET         /                    controllers.HomeController.index()
+
+# An example controller showing how to write asynchronous code
+GET         /message             controllers.AsyncController.message()
+
+# Map static resources from the /public folder to the /assets URL path
+GET         /assets/*file        controllers.Assets.versioned(path="/public", file: Asset)
+
+# problem1
+GET         /1                   controllers.problems.Problem1Controller.index()
+POST        /1                   controllers.problems.Problem1Controller.execute()
+
+# problem2
+GET         /2                   controllers.problems.Problem2Controller.index()
+POST        /2                   controllers.problems.Problem2Controller.execute()
+
+# problem9
+GET         /9                   controllers.problems.Problem9Controller.index()
+POST        /9                   controllers.problems.Problem9Controller.execute()

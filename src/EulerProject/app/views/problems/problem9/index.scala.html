@@ -1,0 +1,46 @@
+@import services.problem9._
+
+@(input: Input, outputs: Seq[Output])(implicit request: RequestHeader)
+
+@views.html.templates.main(s"Problem${Info.id}") {
+    @views.html.problems.components.subject(Info)
+    @views.html.problems.components.execute() {
+        @helper.form(action = helper.CSRF(controllers.problems.routes.Problem9Controller.execute())) {
+            @helper.CSRF.formField
+            <fieldset class="form-group">
+                <label for="sum">合計値</label>
+                <input type="number" class="form-control" id="sum" name="sum" value="@input.sum" min="0" max="1000" />
+            </fieldset>
+            <input type="submit" class="btn btn-primary" value="Calculate"/>
+        }
+    }
+    @views.html.problems.components.result() {
+        @if(outputs.isEmpty) {
+            -
+        } else {
+            <table class="table table-borderless">
+            @for(output <- outputs) {
+                <tr>
+                    <th>Sum</th>
+                    <td>
+                        <div>@{
+                            f"${output.sum()}%,3d"
+                        }</div>
+                        <div>
+                        @{
+                            s"a = ${output.a}, b = ${output.b}, c = ${output.c}"
+                        }
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Product</th>
+                    <td>@{
+                        f"${output.product()}%,3d"
+                    }</td>
+                </tr>
+            }
+            </table>
+        }
+    }
+}

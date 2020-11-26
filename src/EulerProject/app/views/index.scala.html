@@ -1,0 +1,13 @@
+@import services.LinkItem
+
+@(links: Seq[LinkItem])(implicit request: RequestHeader)
+
+@views.html.templates.main("Home") {
+    <div class="list-group">
+    @for(item <- links) {
+        <a class="list-group-item list-group-item-action" href="@item.call">
+            Problem@item.problemInfo.id - @item.problemInfo.title
+        </a>
+    }
+    </div>
+}

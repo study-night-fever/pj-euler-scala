@@ -1,0 +1,2 @@
+web: target\universal\stage\bin\eulerproject.bat
+console: target\universal\stage\bin\eulerproject.bat -main scala.tools.nsc.MainGenericRunner -usejavacp

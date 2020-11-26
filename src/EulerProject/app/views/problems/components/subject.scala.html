@@ -1,0 +1,21 @@
+@import services.ProblemInfo
+
+@(info: ProblemInfo)
+
+<div class="card mb-3">
+    <div class="card-header">
+        Problem@info.id - @info.title
+    </div>
+    <div class="card-body">
+        <blockquote class="blockquote">
+            <blockquote class="blockquote">
+            @info.description()
+            </blockquote>
+            <footer class="blockquote-footer">
+                <a href="https://projecteuler.net/problem=@info.id" target="_blank">
+                    <cite title="Source Title">Problem@info.id - Project Euler</cite>
+                </a>
+            </footer>
+        </blockquote>
+    </div>
+</div>
