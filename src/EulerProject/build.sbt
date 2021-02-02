@@ -1,5 +1,5 @@
 name := "EulerProject"
-version := "2020.10.14.01"
+version := "2021.02.02.01"
 
 lazy val `pj-euler` = (project in file("."))
   .enablePlugins(PlayScala)
@@ -16,7 +16,7 @@ libraryDependencies ++= Seq(
   , ehcache // for cache
   , ws // for WebSocket Protocol
   , specs2 % Test
-  , "com.typesafe.akka" %% "akka-http" % "10.2.1"
+  , "com.typesafe.akka" %% "akka-http" % "10.2.3"
 )
 
 unmanagedResourceDirectories in Test += baseDirectory.value / "target/web/public/sample"
